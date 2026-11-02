@@ -1,0 +1,7 @@
+export { HeroSection } from './HeroSection'
+export { CompanySection } from './CompanySection'
+export { ServicesSection } from './ServicesSection'
+export { CapacitySection } from './CapacitySection'
+export { IndustriesExplorer } from './IndustriesExplorer'
+export { QualitySection } from './QualitySection'
+export { ContactCTA, IndustrialImage, PageIntro } from './Shared'
