@@ -20,6 +20,7 @@
 .sx-display-copy h3 { max-width: 650px; font-size: clamp(26px, 2.6vw, 40px); }
 .sx-display-copy p { max-width: 580px; margin: 13px 0 22px; color: #e1e8f1; font-size: 15px; line-height: 1.6; }
 .sx-process { padding-block: clamp(48px, 5vw, 80px); background: #f2f4f6; }
+.sx-process-action { display: flex; justify-content: flex-end; margin-top: 24px; }
 .sx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; list-style: none; padding: 0; }
 .sx-stage-image { position: relative; margin-bottom: 20px; }
 .sx-stage-image img { width: 100%; height: clamp(190px, 18vw, 290px); object-fit: cover; }
@@ -52,6 +53,8 @@
   .sx-options .arrow { display: none; }
 }
 @media (max-width: 700px) {
+  .sx-process-action { margin-top: 20px; }
+  .sx-process-action .button { width: 100%; }
   .sx-heading { margin-bottom: 24px; }
   .sx-heading h2 { font-size: 34px; }
   .sx-explorer { grid-template-columns: 1fr; }

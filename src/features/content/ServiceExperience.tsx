@@ -62,7 +62,6 @@ export function ServiceExperience({ service }: { service: Service }) {
       <div className="wrap">
         <header className="sx-heading">
           <div><p className="section-label">El punto de partida es su necesidad</p><h2>Del requerimiento al trabajo.</h2></div>
-          <Link className="text-link" to="/empresa/capacidad">Ver capacidad industrial <Arrow diagonal /></Link>
         </header>
         <ol className="sx-stages">
           {stages.map((stage, index) => <li key={stage.title}>
@@ -78,6 +77,9 @@ export function ServiceExperience({ service }: { service: Service }) {
             <p className="small-note">La viabilidad, los controles y los entregables se acuerdan para cada trabajo.</p>
           </div>
         </details>
+        <div className="sx-process-action">
+          <Link className="button" to="/empresa/capacidad">Ver capacidad industrial <Arrow diagonal /></Link>
+        </div>
       </div>
     </section>
     <nav className="sx-related wrap" aria-label="Otras líneas de servicio">
