@@ -1,0 +1,186 @@
+.contact-stage {
+  padding: clamp(55px, 6vw, 110px) 0;
+  background:
+    linear-gradient(
+      90deg,
+      #eef3fa 0%,
+      #eef3fa 48%,
+      rgba(238, 243, 250, 0.7) 62%,
+      rgba(9, 25, 41, 0.12) 100%
+    ),
+    url('/img/mecanizado.webp') right center / auto 100% no-repeat,
+    #eef3fa;
+}
+.contact-stage .contact-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+}
+.contact-stage .contact-aside {
+  display: block;
+  background: rgba(245, 248, 252, 0.92);
+  color: var(--color-ink);
+  padding: 48px;
+  border: 1px solid #a9bee0;
+  clip-path: none;
+}
+.contact-stage .contact-aside .section-label {
+  color: var(--color-corporate);
+  margin-bottom: 28px;
+}
+.contact-stage .contact-aside h2 {
+  font-size: clamp(42px, 4vw, 64px);
+  line-height: 1.02;
+  margin: 0 0 24px;
+}
+.contact-stage .contact-aside .contact-aside-intro {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin: 0 0 32px;
+  max-width: 390px;
+}
+.contact-stage .contact-aside > div {
+  margin: 0 0 22px;
+}
+.contact-stage .contact-aside > div > span {
+  color: var(--color-corporate);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.contact-stage .contact-aside > div > a,
+.contact-stage .contact-aside p {
+  color: var(--color-ink);
+}
+.contact-stage .contact-aside > .small-note {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+.contact-stage .contact-aside .text-link {
+  color: var(--color-corporate);
+}
+.contact-stage .contact-main {
+  position: relative;
+  align-self: start;
+  background: #f9fbfe;
+  padding: clamp(28px, 3vw, 52px);
+  box-shadow: 0 12px 40px rgba(14, 32, 57, 0.12);
+}
+.contact-stage .contact-heading h2 {
+  font-size: clamp(34px, 3vw, 46px);
+  margin: 0 0 8px;
+}
+.contact-stage .contact-heading > p:last-child {
+  font-size: 14px;
+}
+.contact-stage .contact-form {
+  margin-top: 30px;
+  gap: 20px;
+}
+.contact-stage .contact-fields {
+  gap: 20px;
+}
+.contact-stage .contact-form input:not([type='checkbox']):not([type='file']),
+.contact-stage .contact-form select,
+.contact-stage .contact-form textarea {
+  background: #fff;
+  border-color: #b8c7d8;
+}
+.contact-stage .contact-form textarea {
+  min-height: 100px;
+}
+.contact-stage .attachment-field {
+  padding: 20px;
+  background: #eaf0f8;
+}
+.contact-stage .form-final {
+  gap: 12px;
+}
+.contact-stage .form-final .button {
+  min-width: 230px;
+  clip-path: none;
+}
+@media (max-width: 999px) {
+  .contact-stage .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-stage .contact-aside {
+    padding: 32px;
+  }
+  .contact-stage .contact-main {
+    padding: 32px;
+  }
+  .contact-stage {
+    background-position: right top;
+    background-size: auto 100%;
+  }
+}
+@media (max-width: 767px) {
+  .contact-stage {
+    padding: 42px 0;
+  }
+  .contact-stage .contact-aside,
+  .contact-stage .contact-main {
+    padding: 26px 22px;
+  }
+  .contact-stage .contact-aside h2 {
+    font-size: 42px;
+  }
+  .contact-stage .contact-heading h2 {
+    font-size: 34px;
+  }
+  .contact-stage .field-row {
+    gap: 18px;
+  }
+  .contact-stage .contact-form {
+    gap: 20px;
+  }
+  .contact-stage .form-final .button {
+    width: 100%;
+  }
+}
+@media (min-width: 1000px) {
+  .contact-stage .contact-layout {
+    width: min(82%, 1400px);
+    margin-left: max(var(--margin), calc((100% - 1600px) / 2));
+    margin-right: auto;
+  }
+}
+@media (min-width: 1000px) {
+  .contact-stage .contact-layout { align-items: stretch; }
+}
+.contact-stage .contact-aside > .contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 23px;
+}
+.contact-detail > svg {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  color: var(--color-corporate);
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-stage .contact-detail > a,
+.contact-stage .contact-detail p { font-size: 14px; line-height: 1.7; margin: 0; overflow-wrap: anywhere; }
+.contact-stage .contact-detail .text-link { display: inline-block; margin-top: 7px; }
+.contact-stage .contact-map {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border: 0;
+  margin: 0;
+  background: #e4ebf3;
+}
+
+@media (min-width: 1000px) {
+  .contact-stage .contact-main { align-self: stretch; }
+  .contact-stage .contact-aside { display: flex; flex-direction: column; }
+  .contact-stage .contact-map { flex: 1 1 200px; min-height: 180px; }
+}

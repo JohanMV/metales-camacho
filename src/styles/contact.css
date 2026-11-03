@@ -1,45 +1,80 @@
 .contact-layout {
   display: grid;
-  grid-template-columns: 1.4fr 0.85fr;
-  gap: 9%;
+  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.8fr);
+  gap: clamp(36px, 6vw, 100px);
   align-items: start;
 }
-.contact-layout > div > h2 {
-  font-size: 44px;
-  margin-bottom: 18px;
+.contact-heading h2 {
+  font-size: clamp(40px, 3.4vw, 56px);
+  margin-bottom: 14px;
 }
-.contact-layout > div > p:not(.section-label) {
-  font-size: 13px;
+.contact-heading > p:last-child {
+  max-width: 600px;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--color-muted);
 }
 .contact-form {
   display: grid;
-  gap: 25px;
-  margin-top: 33px;
+  gap: 26px;
+  margin-top: 48px;
+}
+.form-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.form-section-heading h3 {
+  font-size: 28px;
+  line-height: 1.15;
+  margin: 0;
+}
+.form-section-heading p {
+  color: var(--color-muted);
+  font-size: 13px;
+  margin: 0;
+}
+.project-heading {
+  margin-top: 24px;
+}
+.contact-fields {
+  display: grid;
+  gap: 22px;
 }
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  gap: 20px;
 }
 .contact-form label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   display: grid;
-  gap: 10px;
+  gap: 9px;
 }
-.contact-form input:not([type='checkbox']):not([type='file']),
+.contact-form input:not([type='checkbox']):not([type='file']):not([type='radio']),
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid #a7b1bb;
-  padding: 15px;
-  background: white;
+  border: 1px solid #c4cdd7;
+  padding: 15px 17px;
+  background: #f7f9fb;
   color: var(--color-ink);
   border-radius: 0;
-  min-height: 51px;
+  min-height: 56px;
   font-size: 14px;
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.contact-form input:not([type='checkbox']):not([type='file']):not([type='radio']):focus,
+.contact-form textarea:focus {
+  border-color: var(--color-corporate);
+  background: white;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(7 60 151 / 12%);
 }
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
@@ -53,46 +88,130 @@
 }
 .contact-form textarea {
   resize: vertical;
-  min-height: 150px;
+  min-height: 164px;
+  line-height: 1.65;
 }
 .contact-form .button {
   justify-self: start;
 }
-.attachment-field {
-  background: var(--color-surface);
-  padding: 25px;
+.service-choice {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
 }
-.attachment-field label {
-  gap: 9px;
+.service-choice legend {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.service-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.contact-form .service-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 13px 16px;
+  background: #f2f4f6;
+  border: 1px solid transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+.service-option:hover {
+  border-color: #9bb7df;
+}
+.service-option:has(input:checked) {
+  background: #e8f0fc;
+  border-color: var(--color-corporate);
+  color: var(--color-corporate);
+}
+.service-option:has(input:focus-visible) {
+  outline: 3px solid #90b9ff;
+  outline-offset: 2px;
+}
+.service-option input {
+  position: absolute;
+  opacity: 0;
+}
+.service-option span {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 12px;
+}
+.service-option span::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #8a9aaa;
+  border-radius: 50%;
+  flex: none;
+}
+.service-option:has(input:checked) span::after {
+  border: 5px solid var(--color-corporate);
+  background: white;
+}
+.attachment-field {
+  background: #eef2f6;
+  padding: 24px 26px;
+}
+.attachment-heading {
+  display: flex;
+  align-items: start;
+  gap: 17px;
+}
+.attachment-heading > div {
+  display: grid;
+  gap: 5px;
 }
 .attachment-field svg {
   color: var(--color-corporate);
-  margin-bottom: 5px;
+  flex: none;
 }
-.attachment-field label > span {
+.attachment-heading span {
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.55;
   font-weight: 400;
   color: var(--color-muted);
 }
-.attachment-field > input {
-  width: 100%;
-  font-size: 13px;
-  margin-top: 20px;
+.visually-hidden-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
 }
-.attachment-field input::file-selector-button {
+.attachment-field .file-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  width: fit-content;
   background: white;
   color: var(--color-corporate);
-  padding: 12px 18px;
-  border: 0;
-  font: 600 13px var(--font-body);
+  padding: 13px 16px;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  margin-right: 13px;
+  margin-top: 20px;
+}
+.visually-hidden-file:focus-visible + .file-trigger {
+  outline: 3px solid #90b9ff;
+  outline-offset: 2px;
 }
 .attachment-field > p {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-muted);
-  margin: 15px 0 0;
+  margin: 13px 0 0;
 }
 .file-list {
   display: grid;
@@ -116,6 +235,17 @@
   gap: 12px;
   font-weight: 400;
   line-height: 1.7;
+}
+.form-final {
+  display: grid;
+  gap: 16px;
+  padding-top: 8px;
+}
+.form-final > .small-note {
+  margin: 0;
+}
+.form-final > .button {
+  margin-top: 8px;
 }
 .checkbox-label input {
   accent-color: var(--color-corporate);
@@ -185,10 +315,17 @@
 }
 .contact-aside h2 {
   font-size: 43px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+.contact-aside-media img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center 45%;
 }
 .contact-aside > div {
-  margin-bottom: 29px;
+  margin-bottom: 24px;
 }
 .contact-aside > div > span {
   font-size: 13px;
@@ -223,16 +360,26 @@
   font-size: 13px;
   color: #bccbda;
 }
-.contact-help {
-  padding: 25px;
-  background: #1d2c3e;
-  margin-top: 30px;
+@media (max-width: 999px) {
+  .contact-aside-media {
+    grid-column: 1 / -1;
+  }
 }
-.contact-help h3 {
-  font-size: 23px;
-  margin-bottom: 15px;
-}
-.contact-help p {
-  font-size: 13px;
-  color: #c6d5e4;
+@media (max-width: 767px) {
+  .contact-form {
+    margin-top: 36px;
+    gap: 22px;
+  }
+  .form-section-heading {
+    display: block;
+  }
+  .form-section-heading p {
+    margin-top: 7px;
+  }
+  .project-heading {
+    margin-top: 16px;
+  }
+  .contact-aside-media img {
+    height: 180px;
+  }
 }

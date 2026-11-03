@@ -6,6 +6,7 @@
 @import './styles/pages.css';
 @import './styles/contact.css';
 @import './styles/responsive.css';
+@import './styles/contact-redesign.css';
 @theme {
   --color-navbar-surface: rgb(255 255 255 / 76%);
   --color-corporate: #073c97;
