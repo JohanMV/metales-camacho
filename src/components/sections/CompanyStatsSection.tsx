@@ -49,8 +49,13 @@ export function CompanyStatsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className={`company-stats${isVisible ? ' is-visible' : ''}`} aria-label="Metales Camacho en cifras">
-      <div className="wrap">
+    <section ref={sectionRef} className={`company-stats${isVisible ? ' is-visible' : ''}`} aria-labelledby="company-stats-title">
+      <div className="wrap company-stats-layout">
+        <div className="company-stats-intro">
+          <p className="section-label">Nuestra trayectoria</p>
+          <h2 id="company-stats-title">Experiencia y capacidad industrial.</h2>
+          <p>Soluciones metalmecánicas para los requerimientos de la industria peruana.</p>
+        </div>
         <ul className="company-stats-grid">
           {companyStats.map(({ value, unit, description }) => (
             <li key={unit} className="company-stat">

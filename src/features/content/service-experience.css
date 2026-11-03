@@ -1,0 +1,81 @@
+.sx-showcase { padding-block: clamp(48px, 5vw, 80px); background: #fff; }
+.sx-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 32px; }
+.sx-heading .section-label { margin-bottom: 14px; }
+.sx-heading h2 { font-size: clamp(34px, 3.4vw, 54px); }
+.sx-heading > p { max-width: 330px; margin: 0; color: var(--color-muted); font-size: 15px; line-height: 1.6; }
+.sx-explorer { display: grid; grid-template-columns: minmax(300px, .85fr) minmax(0, 1.65fr); gap: 24px; }
+.sx-options { display: grid; grid-template-rows: repeat(4, 1fr); gap: 8px; }
+.sx-options button { display: flex; align-items: center; gap: 18px; padding: 14px; border: 1px solid #dce2e8; background: #f7f9fb; color: var(--color-ink); text-align: left; transition: background .2s, color .2s; }
+.sx-options button[aria-pressed='true'] { background: var(--color-corporate); color: #fff; border-color: var(--color-corporate); }
+.sx-options button:hover:not([aria-pressed='true']) { background: #e9eff6; }
+.sx-options button > img { width: 88px; height: 74px; object-fit: cover; flex-shrink: 0; }
+.sx-options button > span { flex: 1; }
+.sx-options small { display: block; margin-bottom: 7px; font-size: 11px; opacity: .75; }
+.sx-options strong { display: block; font: 500 clamp(17px, 1.3vw, 22px)/1.2 var(--font-display); }
+.sx-options .arrow { width: 19px; }
+.sx-display { position: relative; min-height: 510px; overflow: hidden; background: var(--color-dark); }
+.sx-display-photo { position: absolute; width: 100%; height: 100%; object-fit: cover; animation: sx-photo-in .35s ease-out; }
+.sx-display::after { content: ''; position: absolute; inset: 25% 0 0; background: linear-gradient(transparent, #081525ed); pointer-events: none; }
+.sx-display-copy { position: absolute; z-index: 1; bottom: 0; left: 0; right: 0; padding: clamp(24px, 3vw, 44px); color: #fff; }
+.sx-display-copy h3 { max-width: 650px; font-size: clamp(26px, 2.6vw, 40px); }
+.sx-display-copy p { max-width: 580px; margin: 13px 0 22px; color: #e1e8f1; font-size: 15px; line-height: 1.6; }
+.sx-process { padding-block: clamp(48px, 5vw, 80px); background: #f2f4f6; }
+.sx-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; list-style: none; padding: 0; }
+.sx-stage-image { position: relative; margin-bottom: 20px; }
+.sx-stage-image img { width: 100%; height: clamp(190px, 18vw, 290px); object-fit: cover; }
+.sx-stage-image span { position: absolute; bottom: 0; left: 0; padding: 12px 18px; background: var(--color-corporate); color: white; font-size: 14px; font-weight: 600; }
+.sx-stages h3 { font-size: clamp(23px, 2vw, 29px); }
+.sx-stages p { margin: 10px 0 0; max-width: 390px; font-size: 15px; line-height: 1.6; color: var(--color-muted); }
+.sx-preparation { margin-top: 36px; background: white; border: 1px solid #d5dce4; }
+.sx-preparation summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 23px 28px; cursor: pointer; font-size: 17px; font-weight: 600; }
+.sx-preparation summary::-webkit-details-marker { display: none; }
+.sx-plus { color: var(--color-corporate); font-size: 26px; transition: transform .25s; }
+.sx-preparation[open] .sx-plus { transform: rotate(45deg); }
+.sx-preparation-content { padding: 0 28px 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 45px; }
+.sx-preparation-content p { margin: 0; font-size: 14px; color: var(--color-muted); }
+.sx-preparation-content ul { list-style: disc; padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.9; }
+.sx-preparation-content .small-note { grid-column: 1 / -1; font-size: 12px; }
+.sx-related { padding-block: 36px; }
+.sx-related .section-label { margin-bottom: 18px; }
+.sx-related > div { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.sx-related a { display: flex; align-items: center; gap: 22px; color: var(--color-ink); border-bottom: 1px solid #d5dce4; padding-bottom: 18px; }
+.sx-related a img { width: 100px; height: 68px; object-fit: cover; }
+.sx-related a span { flex: 1; font: 500 25px/1.15 var(--font-display); }
+.sx-related a > .arrow { color: var(--color-corporate); }
+@keyframes sx-photo-in { from { opacity: .5; } to { opacity: 1; } }
+@media (max-width: 999px) {
+  .sx-heading { align-items: start; flex-direction: column; gap: 16px; }
+  .sx-heading > p { max-width: 560px; }
+  .sx-explorer { grid-template-columns: minmax(260px, 1fr) minmax(0, 1.3fr); gap: 16px; }
+  .sx-options button > img { width: 60px; height: 60px; }
+  .sx-options button { gap: 12px; }
+  .sx-options .arrow { display: none; }
+}
+@media (max-width: 700px) {
+  .sx-heading { margin-bottom: 24px; }
+  .sx-heading h2 { font-size: 34px; }
+  .sx-explorer { grid-template-columns: 1fr; }
+  .sx-options { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 8px; }
+  .sx-options button { align-items: start; padding: 12px; gap: 8px; }
+  .sx-options button > img { display: none; }
+  .sx-options strong { font-size: 16px; }
+  .sx-options small { margin-bottom: 5px; }
+  .sx-display { min-height: 410px; }
+  .sx-display-copy { padding: 22px; }
+  .sx-display-copy h3 { font-size: 28px; }
+  .sx-display-copy p { font-size: 14px; }
+  .sx-display-copy .button { font-size: 13px; }
+  .sx-stages { grid-template-columns: 1fr; gap: 26px; }
+  .sx-stages li { display: grid; grid-template-columns: 105px 1fr; column-gap: 17px; align-content: start; }
+  .sx-stage-image { grid-row: 1 / 3; margin: 0; }
+  .sx-stage-image img { height: 132px; }
+  .sx-stage-image span { padding: 5px 10px; font-size: 11px; }
+  .sx-stages h3 { font-size: 23px; align-self: end; }
+  .sx-stages p { font-size: 13px; margin-top: 8px; }
+  .sx-preparation summary { padding: 18px; font-size: 15px; }
+  .sx-preparation-content { grid-template-columns: 1fr; padding: 0 18px 20px; gap: 18px; }
+  .sx-related > div { grid-template-columns: 1fr; gap: 18px; }
+  .sx-related a img { width: 80px; height: 60px; }
+  .sx-related a span { font-size: 23px; }
+}
+@media (prefers-reduced-motion: reduce) { .sx-display-photo { animation: none; } .sx-plus, .sx-options button { transition: none; } }
