@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { services, industries } from '@/data/company'
 import { Arrow } from '@/components/ui'
+import { CompanyStatsSection } from '@/components/sections/CompanyStatsSection'
 import {
   HeroSection,
   ServicesSection,
@@ -27,6 +28,7 @@ export function Home() {
       <HeroSection />
       <ServicesSection services={services} />
       <ProjectGallery />
+      <CompanyStatsSection />
       <CapacitySection />
       <section className="wrap industries-section section-space">
         <div className="section-heading">
