@@ -184,3 +184,22 @@
   .contact-stage .contact-aside { display: flex; flex-direction: column; }
   .contact-stage .contact-map { flex: 1 1 200px; min-height: 180px; }
 }
+.contact-stage .quote-explanation { margin: 0; }
+.contact-stage .map-address { margin: 0 0 10px; font-size: 13px; color: var(--color-muted); }
+@media (max-width: 767px) {
+  .contact-stage { background: url('/img/mecanizado.webp') center center / cover no-repeat; }
+  .contact-stage .contact-layout { width: calc(100% - 32px); margin-inline: auto; }
+  .contact-stage .contact-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .contact-stage .field-row { display: contents; }
+  .contact-stage .contact-form > * { grid-column: 1 / -1; order: 4; }
+  .contact-stage .field-row label:has([name='name']) { grid-column: 1 / -1; order: 0; }
+  .contact-stage .field-row label:has([name='email']) { grid-column: 1 / -1; order: 1; }
+  .contact-stage .field-row label:has([name='company']) { grid-column: 1; order: 2; }
+  .contact-stage .field-row label:has([name='phone']) { grid-column: 2; order: 3; }
+  .contact-stage .field-row input { min-width: 0; padding-inline: 10px; }
+}
+@media (max-width: 767px) {
+  .contact-stage .contact-main { order: 0; }
+  .contact-stage .contact-aside { order: 1; background: #f5f8fc; }
+  .contact-stage .contact-heading > p:last-child { display: none; }
+}

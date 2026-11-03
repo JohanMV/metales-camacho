@@ -798,6 +798,7 @@
 }
 
 @media (max-width: 767px) {
+  .history-photos-images > img.history-photos-first { object-position: left center; }
   .capacity-section { padding-block: 28px; }
   .capacity-heading { gap: 12px; margin-bottom: 22px; }
   .capacity-heading .section-label { margin-bottom: 10px; }

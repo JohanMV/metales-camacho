@@ -22,7 +22,7 @@ function HistoryPhotos() {
     <div className="history-photos" role="group" aria-label="Fotografías de la empresa">
       <figure className="industrial-image history-photos-images">
         {historyPhotos.map((photo, index) => (
-          <img key={photo.src} src={photo.src} alt={index === active ? photo.alt : ''} aria-hidden={index !== active} className={index === active ? 'is-active' : ''} loading="lazy" width="1536" height="1024" />
+          <img key={photo.src} src={photo.src} alt={index === active ? photo.alt : ''} aria-hidden={index !== active} className={`${index === active ? 'is-active' : ''}${index === 0 ? ' history-photos-first' : ''}`} loading="lazy" width="1536" height="1024" />
         ))}
       </figure>
       <div className="history-photos-controls">
