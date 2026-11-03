@@ -109,8 +109,8 @@ export const industries: Industry[] = [
       'Barandas, escaleras y grating',
       'Fabricación y montaje según alcance',
     ],
-    image: '/img/soldadura.webp',
-    alt: 'Fabricación de una estructura metálica',
+    image: '/img/construccion-infraestructura.webp',
+    alt: 'Montaje de estructura metálica en una obra de infraestructura',
   },
   {
     id: 'manufactura',
