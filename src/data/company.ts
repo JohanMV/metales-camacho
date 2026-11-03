@@ -5,8 +5,8 @@ export const company = {
   name: 'Metales Camacho',
   legalName: 'Metal Mecánica Camacho S.A.C.',
   email: 'ventas1@metalescamacho.com',
-  phone: '(01) 528-6227',
-  phoneHref: 'tel:+5115286227',
+  phone: '916 842 610',
+  phoneHref: 'tel:+51916842610',
   location: 'Industrial Infantas, Los Olivos, Lima, Perú',
   address: 'Jr. El Latón 5579, Urb. Industrial Infantas, Los Olivos, Lima',
 }

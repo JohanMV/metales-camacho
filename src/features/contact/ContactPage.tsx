@@ -109,7 +109,6 @@ export function ContactPage() {
                   placeholder="Indique tipo de pieza o equipo, material, dimensiones, cantidad y condiciones de trabajo."
                 />
               </label>
-              <p className="small-note quote-explanation">Prepare un borrador y envíelo desde su correo.</p>
               <button className="button" type="submit" disabled={busy}>
                 {busy ? 'Preparando solicitud…' : 'Preparar solicitud'}
                 <Arrow diagonal />

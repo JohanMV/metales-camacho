@@ -6,7 +6,7 @@
       #eef3fa 0%,
       #eef3fa 48%,
       rgba(238, 243, 250, 0.7) 62%,
-      rgba(9, 25, 41, 0.12) 100%
+      rgba(9, 25, 41, 0.24) 100%
     ),
     url('/img/mecanizado.webp') right center / auto 100% no-repeat,
     #eef3fa;
@@ -19,14 +19,14 @@
 }
 .contact-stage .contact-aside {
   display: block;
-  background: rgba(245, 248, 252, 0.92);
-  color: var(--color-ink);
+  background: #1a3048;
+  color: #f7f9fc;
   padding: 48px;
-  border: 1px solid #a9bee0;
+  border: 1px solid #344b64;
   clip-path: none;
 }
 .contact-stage .contact-aside .section-label {
-  color: var(--color-corporate);
+  color: #a9c7ff;
   margin-bottom: 28px;
 }
 .contact-stage .contact-aside h2 {
@@ -37,7 +37,7 @@
 .contact-stage .contact-aside .contact-aside-intro {
   font-size: 16px;
   line-height: 1.7;
-  color: var(--color-muted);
+  color: #c3cfdd;
   margin: 0 0 32px;
   max-width: 390px;
 }
@@ -45,13 +45,13 @@
   margin: 0 0 22px;
 }
 .contact-stage .contact-aside > div > span {
-  color: var(--color-corporate);
+  color: #a9c7ff;
   font-weight: 700;
   margin-bottom: 5px;
 }
 .contact-stage .contact-aside > div > a,
 .contact-stage .contact-aside p {
-  color: var(--color-ink);
+  color: #f7f9fc;
 }
 .contact-stage .contact-aside > .small-note {
   color: var(--color-muted);
@@ -73,9 +73,10 @@
 }
 .contact-stage .contact-heading > p:last-child {
   font-size: 14px;
+  margin-bottom: 0;
 }
 .contact-stage .contact-form {
-  margin-top: 30px;
+  margin-top: 18px;
   gap: 20px;
 }
 .contact-stage .contact-fields {
@@ -161,7 +162,7 @@
   width: 23px;
   height: 23px;
   flex: 0 0 23px;
-  color: var(--color-corporate);
+  color: #a9c7ff;
   stroke: currentColor;
   stroke-width: 1.6;
   stroke-linecap: round;
@@ -180,14 +181,29 @@
 }
 
 @media (min-width: 1000px) {
-  .contact-stage .contact-main { align-self: stretch; }
+  .contact-stage .contact-main {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact-stage .contact-main > .contact-heading,
+  .contact-stage .contact-main > .contact-form,
+  .contact-stage .contact-main > .quote-result {
+    width: 92%;
+    margin-inline: auto;
+  }
   .contact-stage .contact-aside { display: flex; flex-direction: column; }
   .contact-stage .contact-map { flex: 1 1 200px; min-height: 180px; }
 }
-.contact-stage .quote-explanation { margin: 0; }
 .contact-stage .map-address { margin: 0 0 10px; font-size: 13px; color: var(--color-muted); }
 @media (max-width: 767px) {
-  .contact-stage { background: url('/img/mecanizado.webp') center center / cover no-repeat; }
+  .contact-stage {
+    background:
+      linear-gradient(rgba(9, 25, 41, 0.2), rgba(9, 25, 41, 0.2)),
+      url('/img/mecanizado.webp') center center / cover no-repeat;
+  }
   .contact-stage .contact-layout { width: calc(100% - 32px); margin-inline: auto; }
   .contact-stage .contact-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
   .contact-stage .field-row { display: contents; }
@@ -200,6 +216,6 @@
 }
 @media (max-width: 767px) {
   .contact-stage .contact-main { order: 0; }
-  .contact-stage .contact-aside { order: 1; background: #f5f8fc; }
+  .contact-stage .contact-aside { order: 1; background: #1a3048; }
   .contact-stage .contact-heading > p:last-child { display: none; }
 }
