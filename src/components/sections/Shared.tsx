@@ -33,7 +33,7 @@ export function ContactCTA({
   service,
 }: ContactCTAProps) {
   return (
-    <section className="contact-band">
+    <section className="contact-band contact-band-photo">
       <div className="wrap contact-band-inner">
         <div>
           <p className="section-label">De la necesidad a la solución</p>

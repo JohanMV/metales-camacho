@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { Arrow } from '@/components/ui'
 import { ContactCTA, IndustrialImage, PageIntro } from '@/components/sections'
+import { ProjectGallery } from '@/features/content/Home'
 
 export function ProjectsPage() {
   if (projects.length > 0)
@@ -15,6 +16,7 @@ export function ProjectsPage() {
           text="Trabajos documentados de fabricación, recuperación e ingeniería industrial."
           image="/img/mecanizado.webp"
         />
+        <ProjectGallery showLink={false} />
         <ProjectGrid projects={projects} />
         <ContactCTA />
       </>
@@ -27,6 +29,7 @@ export function ProjectsPage() {
         text="Cada trabajo de fabricación parte de una necesidad concreta y de un alcance técnico acordado."
         image="/img/torneado.webp"
       />
+      <ProjectGallery showLink={false} />
       <section className="wrap detail-feature section-space">
         <IndustrialImage
           src="/img/estructuras.webp"

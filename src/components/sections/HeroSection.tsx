@@ -28,7 +28,7 @@ export function HeroSection() {
                 Solicitar cotización
                 <Arrow diagonal />
               </Link>
-              <Link className="hero-secondary" to="/servicios">
+              <Link className="button hero-secondary" to="/servicios">
                 Conocer servicios
                 <Arrow />
               </Link>

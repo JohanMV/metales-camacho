@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { services, industries } from '@/data/company'
 import { Arrow } from '@/components/ui'
@@ -7,7 +9,6 @@ import {
   ServicesSection,
   CapacitySection,
   IndustriesExplorer,
-  QualitySection,
   ContactCTA,
 } from '@/components/sections'
 
@@ -25,32 +26,7 @@ export function Home() {
     <>
       <HeroSection />
       <ServicesSection services={services} />
-      <section className="project-banner">
-        <div className="wrap project-gallery">
-          <div className="project-gallery-heading">
-            <div>
-              <p className="section-label">Proyectos y fabricación</p>
-              <h2>Galería de proyectos.</h2>
-            </div>
-            <Link className="text-link" to="/proyectos">
-              Ver proyectos <Arrow diagonal />
-            </Link>
-          </div>
-          <div className="project-gallery-grid">
-            {galleryImages.map((item, index) => (
-              <figure key={item.image}>
-                <div className="project-gallery-image">
-                  <img src={`https://images.unsplash.com/${item.image}?auto=format&fit=crop&w=1000&q=80`} alt={item.alt} loading="lazy" width="1000" height="750" />
-                </div>
-                <figcaption>
-                  <span className="project-gallery-number">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="project-gallery-caption"><strong>{item.title}</strong></span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProjectGallery />
       <CapacitySection />
       <section className="wrap industries-section section-space">
         <div className="section-heading">
@@ -59,22 +35,114 @@ export function Home() {
             <h2>
               Soluciones
               <br />
-              por industria.
+              {' '}por industria.
             </h2>
           </div>
-          <p>
-            Cada operación tiene sus propios retos. Explore cómo se aplican nuestras capacidades a
-            su sector.
-          </p>
         </div>
+        <p className="industries-description">
+          Cada operación tiene sus propios retos. Explore cómo se aplican nuestras capacidades a
+          su sector.
+        </p>
         <IndustriesExplorer
           industries={industries}
           active={activeIndustry}
           onChange={setActiveIndustry}
         />
+        <Link className="button industries-heading-link" to="/industrias">
+          Conocer las industrias <Arrow />
+        </Link>
       </section>
-      <QualitySection />
       <ContactCTA />
+    </>
+  )
+}
+
+export function ProjectGallery({ showLink = true }: { showLink?: boolean }) {
+  const [selectedImage, setSelectedImage] = useState<(typeof galleryImages)[number] | null>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const reducedMotion = useReducedMotion()
+  const renderGalleryImage = (item: (typeof galleryImages)[number], index: number) => (
+    <figure key={item.image}>
+      <button className="project-gallery-image" type="button" onClick={() => setSelectedImage(item)} aria-label={`Ampliar imagen: ${item.title}`}>
+        <img src={`https://images.unsplash.com/${item.image}?auto=format&fit=crop&w=1000&q=80`} alt={item.alt} loading="lazy" width="1000" height="750" />
+      </button>
+      <figcaption>
+        <span className="project-gallery-number">{String(index + 1).padStart(2, '0')}</span>
+        <span className="project-gallery-caption"><strong>{item.title}</strong></span>
+      </figcaption>
+    </figure>
+  )
+
+  useEffect(() => {
+    if (!selectedImage) return
+    const previousFocus = document.activeElement as HTMLElement | null
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedImage(null)
+      if (event.key === 'Tab') {
+        event.preventDefault()
+        closeButtonRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
+      previousFocus?.focus()
+    }
+  }, [selectedImage])
+
+  return (
+    <>
+      <section className="project-banner">
+        <div className="wrap project-gallery">
+          <div className="project-gallery-heading">
+            <div>
+              <p className="section-label">Proyectos y fabricación</p>
+              <h2>Galería de proyectos.</h2>
+            </div>
+          </div>
+          <div className="project-gallery-grid">{galleryImages.map((item, index) => renderGalleryImage(item, index))}</div>
+          {showLink && <Link className="button project-gallery-link" to="/proyectos">
+            Ver proyectos <Arrow diagonal />
+          </Link>}
+        </div>
+      </section>
+      {createPortal(
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              className="gallery-lightbox"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Imagen ampliada: ${selectedImage.title}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.25 }}
+              onClick={() => setSelectedImage(null)}
+            >
+              <button ref={closeButtonRef} className="gallery-lightbox-close" type="button" aria-label="Cerrar imagen ampliada" onClick={() => setSelectedImage(null)}>
+                <span aria-hidden="true">×</span>
+              </button>
+              <motion.figure
+                className="gallery-lightbox-content"
+                initial={reducedMotion ? false : { opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reducedMotion ? undefined : { opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <img src={`https://images.unsplash.com/${selectedImage.image}?auto=format&fit=max&w=2000&q=85`} alt={selectedImage.alt} />
+                <figcaption>{selectedImage.title}</figcaption>
+              </motion.figure>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </>
   )
 }

@@ -77,6 +77,15 @@
 .detail-feature .industrial-image {
   height: 460px;
 }
+.history-photos { position: relative; min-width: 0; }
+.detail-feature .history-photos .history-photos-images { clip-path: none; }
+.history-photos-images > img { position: absolute; inset: 0; opacity: 0; transition: opacity 500ms ease; }
+.history-photos-images > img.is-active { opacity: 1; }
+.history-photos-controls { position: absolute; right: 20px; bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.history-photos-controls button { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--color-corporate); background: var(--color-corporate); color: white; }
+.history-photos-controls button:hover { background: var(--color-corporate-hover); }
+.history-photos-controls button:hover > .service-arrow-previous { transform: rotate(180deg) translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .history-photos-images > img { transition: none; } }
 .detail-feature h2 {
   margin-bottom: 27px;
 }
@@ -344,16 +353,18 @@
   line-height: 1;
 }
 
-/* Frase grande (misión / visión) */
+.purpose-card-copy { display: grid; gap: 12px; }
+.purpose-card-text,
+.purpose-card-values li {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #a8c0d6;
+}
 .purpose-card-text {
-  font-family: var(--font-display);
-  font-size: clamp(17px, 1.5vw, 22px);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
-  color: white;
   margin: 0;
-  flex: 1;
 }
 
 /* Lista de valores dentro de la tercera card */
@@ -367,11 +378,8 @@
 }
 
 .purpose-card-values li {
-  font-size: 13px;
-  color: #a8c0d6;
   padding: 9px 0;
   border-bottom: 1px solid rgb(255 255 255 / 7%);
-  line-height: 1.3;
   padding-right: 8px;
 }
 
@@ -416,11 +424,46 @@
   .purpose-card-image {
     height: 200px;
   }
-  .purpose-card-text {
-    font-size: 18px;
-  }
 }
 /* ── Fin purpose-* ──────────────────────────────────────────────────── */
+
+/* Misión, visión y valores siguen el lenguaje claro del resto de la web. */
+.company-purpose { background: #f1f4f7; color: var(--color-ink); padding-block: clamp(72px, 7vw, 112px); }
+.company-purpose-heading { align-items: end; }
+.purpose-cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.purpose-cards-grid > *:last-child { grid-column: 1 / -1; }
+.purpose-card { background: white; border: 1px solid #d5dce4; clip-path: none; }
+.purpose-card-body { padding: clamp(28px, 3vw, 44px); }
+.purpose-card-label {
+  margin: 0 0 20px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-transform: none;
+}
+.purpose-card-copy { gap: 12px; max-width: 590px; }
+.purpose-card-text, .purpose-card-values li {
+  color: var(--color-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.purpose-card-values { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; }
+.purpose-card-values li, .purpose-card-values li:nth-child(odd), .purpose-card-values li:nth-child(even) {
+  border: 0;
+  border-top: 1px solid #d5dce4;
+  padding: 12px 0;
+}
+@media (max-width: 767px) {
+  .company-purpose-heading { align-items: flex-start; }
+  .purpose-cards-grid { grid-template-columns: 1fr; gap: 12px; }
+  .purpose-cards-grid > *:last-child { grid-column: auto; }
+  .purpose-card-body { padding: 24px; }
+  .purpose-card-label { margin-bottom: 16px; font-size: 26px; }
+  .purpose-card-values { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+}
 
 .history-section {
   background: var(--color-dark);

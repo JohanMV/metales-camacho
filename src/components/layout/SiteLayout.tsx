@@ -72,14 +72,15 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="wrap">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <Link to="/" aria-label="Metales Camacho, inicio">
-              <img src="/img/logo.webp" alt="Metales Camacho" width="2056" height="765" />
-            </Link>
+        <div className="footer-brand">
+          <Link to="/" aria-label="Metales Camacho, inicio">
+            <img src="/img/logo.webp" alt="Metales Camacho" width="2056" height="765" />
+          </Link>
+          <div>
             <p>Ingeniería y fabricación para los requerimientos de la industria.</p>
-            <span>Los Olivos · Lima, Perú</span>
           </div>
+        </div>
+        <div className="footer-top">
           <div>
             <h3>Empresa</h3>
             <Link to="/empresa">Nosotros</Link>
